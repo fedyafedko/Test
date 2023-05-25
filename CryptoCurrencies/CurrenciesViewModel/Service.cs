@@ -5,17 +5,18 @@ namespace ViewModel
 {
     class CurrencyService
     {
-        private static readonly HttpClient client = new HttpClient();
+        private static readonly HttpClient _httpClient = new HttpClient();
         public static async Task<List<Currency>> GetTop()
         {
             string apiUrl = "https://api.coincap.io/v2/assets";
-            var response = await client.GetAsync(apiUrl);
+            var response = await _httpClient.GetAsync(apiUrl);
 
             if (response.IsSuccessStatusCode)
             {
                 string responseBody = await response.Content.ReadAsStringAsync();
                 var currencyData = JsonConvert.DeserializeObject<ResponseModel<List<Currency>>>(responseBody);
-                return currencyData.Data;
+                var Top10 = currencyData.Data.Where(p => p.Rank <= 10).ToList();
+                return Top10;
             }
             else
             {
@@ -25,7 +26,7 @@ namespace ViewModel
         public static async Task<Currency> GetById(string id, double amount)
         {
             string apiUrl = $"https://api.coincap.io/v2/assets/{id}";
-            var response = await client.GetAsync(apiUrl);
+            var response = await _httpClient.GetAsync(apiUrl);
 
             if (response.IsSuccessStatusCode)
             {

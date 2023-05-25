@@ -4,12 +4,35 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
+        xmlns:userControls="clr-namespace:View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="CryptoCurrency" Height="450" Width="800">
     <Grid>
-        
-            <Button Content="Load Currencies" Click="LoadCurrencies_Click" Margin="10" Width="140" VerticalAlignment="Top" HorizontalAlignment="Left" />
-            <Button Content="Load Selected Currency" Click="LoadSelectedCurrency_Click" Margin="10" Width="140" VerticalAlignment="Top" HorizontalAlignment="Right" />
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="240*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="455*"/>
+            <ColumnDefinition Width="150*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Load Currencies" Click="LoadCurrencies_Click" Margin="10,0,0,0" Width="140" VerticalAlignment="Center" HorizontalAlignment="Left" Height="20" />
+        <DataGrid x:Name="currencyDataGrid" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Rank" Binding="{Binding Rank}" FontFamily="Arial" FontStyle="Italic" FontWeight="Bold"/>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" FontFamily="Arial" FontStyle="Italic" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" FontFamily="Arial" FontStyle="Italic" />
+                <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}" FontFamily="Arial" FontStyle="Italic" />
+                <DataGridTextColumn Header="Supply" Binding="{Binding Supply}" FontFamily="Arial" FontStyle="Italic"/>
+                <DataGridTextColumn Header="PriceUSD" Binding="{Binding PriceUSD}" FontFamily="Arial" FontStyle="Italic"/>
+                <DataGridTextColumn Header="ChangePercent24Hr" Binding="{Binding  ChangePercent24Hr}" FontFamily="Arial" FontStyle="Italic"/>
+            </DataGrid.Columns>
+            
+        </DataGrid>
+        <Button Content="Load Selected Currency" Click="LoadSelectedCurrency_Click" Margin="0,0,10,0" Width="140" VerticalAlignment="Center" HorizontalAlignment="Right" Height="20" Grid.Column="2" />
+        <!--<userControls:UserControlTextBox/>-->
+
     </Grid>
 </Window>

@@ -4,13 +4,13 @@ using System.ComponentModel;
 namespace ViewModel;
 public class CurrencyViewModel : INotifyPropertyChanged
 {
-    private List<Currency> topCurrencies;
+    private List<Currency> _topCurrencies;
     public List<Currency> TopCurrencies
     {
-        get { return topCurrencies; }
+        get { return _topCurrencies; }
         set
         {
-            topCurrencies = value;
+            _topCurrencies = value;
             OnPropertyChanged(nameof(TopCurrencies));
         }
     }
@@ -24,15 +24,17 @@ public class CurrencyViewModel : INotifyPropertyChanged
             OnPropertyChanged(nameof(SelectedCurrency));
         }
     }
-    public async Task LoadCurrenciesAsync()
+    public async Task<List<Currency>> LoadCurrenciesAsync()
     {
         List<Currency> currencies = await CurrencyService.GetTop();
         TopCurrencies = currencies;
+        return TopCurrencies;
     }
-    public async Task LoadCurrencyByIdAsync(string id, double amount)
+    public async Task<Currency> LoadCurrencyByIdAsync(string id, double amount)
     {
         Currency currency = await CurrencyService.GetById(id, amount);
         SelectedCurrency = currency;
+        return SelectedCurrency;
     }
     public event PropertyChangedEventHandler PropertyChanged;
 
