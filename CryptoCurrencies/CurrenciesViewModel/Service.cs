@@ -6,7 +6,7 @@ namespace ViewModel
     class CurrencyService
     {
         private static readonly HttpClient _httpClient = new HttpClient();
-        public static async Task<List<Currency>> GetTop()
+        public static async Task<ResponseModel<List<Currency>>> GetTop()
         {
             string apiUrl = "https://api.coincap.io/v2/assets";
             var response = await _httpClient.GetAsync(apiUrl);
@@ -15,8 +15,7 @@ namespace ViewModel
             {
                 string responseBody = await response.Content.ReadAsStringAsync();
                 var currencyData = JsonConvert.DeserializeObject<ResponseModel<List<Currency>>>(responseBody);
-                var Top10 = currencyData.Data.Where(p => p.Rank <= 10).ToList();
-                return Top10;
+                return currencyData;
             }
             else
             {

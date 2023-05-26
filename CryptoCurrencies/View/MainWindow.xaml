@@ -1,38 +1,209 @@
 ﻿<Window x:Class="View.MainWindow"
+        Background="#E3E4DB"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         xmlns:userControls="clr-namespace:View"
+        xmlns:vm="clr-namespace:ViewModel;assembly=CurrenciesViewModel"
+        xmlns:user="clr-namespace:View.UserControls"
         mc:Ignorable="d"
-        Title="CryptoCurrency" Height="450" Width="800">
+        d:DataContext="{d:DesignInstance Type=vm:CurrencyViewModel}"
+        ResizeMode="CanMinimize"
+        Title="CryptoCurrency"
+        Height="450"
+        Width="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="240*"/>
-
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150*"/>
-            <ColumnDefinition Width="455*"/>
-            <ColumnDefinition Width="150*"/>
-        </Grid.ColumnDefinitions>
-        <Button Content="Load Currencies" Click="LoadCurrencies_Click" Margin="10,0,0,0" Width="140" VerticalAlignment="Center" HorizontalAlignment="Left" Height="20" />
-        <DataGrid x:Name="currencyDataGrid" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Rank" Binding="{Binding Rank}" FontFamily="Arial" FontStyle="Italic" FontWeight="Bold"/>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}" FontFamily="Arial" FontStyle="Italic" />
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" FontFamily="Arial" FontStyle="Italic" />
-                <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}" FontFamily="Arial" FontStyle="Italic" />
-                <DataGridTextColumn Header="Supply" Binding="{Binding Supply}" FontFamily="Arial" FontStyle="Italic"/>
-                <DataGridTextColumn Header="PriceUSD" Binding="{Binding PriceUSD}" FontFamily="Arial" FontStyle="Italic"/>
-                <DataGridTextColumn Header="ChangePercent24Hr" Binding="{Binding  ChangePercent24Hr}" FontFamily="Arial" FontStyle="Italic"/>
-            </DataGrid.Columns>
-            
-        </DataGrid>
-        <Button Content="Load Selected Currency" Click="LoadSelectedCurrency_Click" Margin="0,0,10,0" Width="140" VerticalAlignment="Center" HorizontalAlignment="Right" Height="20" Grid.Column="2" />
-        <!--<userControls:UserControlTextBox/>-->
-
+        <TabControl Background="#003554">
+            <TabItem Header="Main"
+                     Background="#E0DDCF"
+                     IsSelected="True">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30*" />
+                        <RowDefinition Height="240*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150*" />
+                        <ColumnDefinition Width="455*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Assets"
+                            Click="LoadCurrencies_Click"
+                            Margin="10,0,0,0"
+                            Width="140"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Height="20">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1"
+                                                 StartPoint="0.5,0">
+                                <GradientStop Color="#FF003554"
+                                              Offset="0" />
+                                <GradientStop Color="#FF78A1BB" />
+                                <GradientStop Color="#FF78A1BB" />
+                                <GradientStop Color="#FFEEEBD3"
+                                              Offset="1" />
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <DataGrid x:Name="currencyDataGrid"
+                              Background="#E3E4DB"
+                              AutoGenerateColumns="False"
+                              Grid.Column="1"
+                              FontSize="16"
+                              IsReadOnly="True"
+                              VerticalAlignment="Top"
+                              Margin="15,10,15,0"
+                              Height="279"
+                              SelectionChanged="currencyDataGrid_SelectionChanged"
+                              Grid.Row="1">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Rank"
+                                                Binding="{Binding Rank}"
+                                                FontFamily="Arial"
+                                                FontStyle="Italic"
+                                                FontWeight="Bold" />
+                            <DataGridTextColumn Header="Id"
+                                                Binding="{Binding Id}"
+                                                FontFamily="Arial"
+                                                FontStyle="Italic" />
+                            <DataGridTextColumn Header="Name"
+                                                Binding="{Binding Name}"
+                                                FontFamily="Arial"
+                                                FontStyle="Italic" />
+                            <DataGridTextColumn Header="Symbol"
+                                                Binding="{Binding Symbol}"
+                                                FontFamily="Arial"
+                                                FontStyle="Italic" />
+                            <DataGridTextColumn Header="Supply"
+                                                Binding="{Binding Supply}"
+                                                FontFamily="Arial"
+                                                FontStyle="Italic" />
+                            <DataGridTextColumn Header="PriceUSD"
+                                                Binding="{Binding PriceUSD}"
+                                                FontFamily="Arial"
+                                                FontStyle="Italic" />
+                            <DataGridTextColumn Header="ChangePercent24Hr"
+                                                Binding="{Binding  ChangePercent24Hr}"
+                                                FontFamily="Arial"
+                                                FontStyle="Italic" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Image x:Name="myImage"
+                           Source="/Images/Coin.png"
+                           Width="100"
+                           Height="100"
+                           VerticalAlignment="Top"
+                           Grid.Row="1"
+                           Margin="30,225,28,0" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Currency"
+                     Background="#E0DDCF">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="75*" />
+                        <RowDefinition Height="156*" />
+                        <RowDefinition Height="175*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="79*" />
+                        <ColumnDefinition Width="247*" />
+                        <ColumnDefinition Width="71*" />
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="comboBox"
+                              Grid.Row="1"
+                              Grid.Column="1"
+                              Width="200"
+                              Height="40"
+                              IsEditable="True"
+                              IsTextSearchEnabled="True"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Left"
+                              VerticalContentAlignment="Center"
+                              HorizontalContentAlignment="Left"
+                              FontSize="16"
+                              GotFocus="comboBox_GotFocus"
+                              ItemsSource="{Binding SimilarNames, UpdateSourceTrigger=PropertyChanged}"
+                              FontWeight="Bold" />
+                    <user:UserControlAmountTB x:Name="amountInput"
+                                              Grid.Row="1"
+                                              Grid.Column="1"
+                                              Width="210"
+                                              Height="40"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Left"
+                                              Margin="268,0,0,0" />
+                    <Button Content="="
+                            Name="btnEqual"
+                            Click="btnEqual_Click"
+                            Margin="214,0,0,0"
+                            Width="40"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Height="40"
+                            Grid.Column="1"
+                            Grid.Row="1">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1"
+                                                 StartPoint="0.5,0">
+                                <GradientStop Color="#FFDCD6F7" />
+                                <GradientStop Color="#FFCACFD6"
+                                              Offset="1" />
+                                <GradientStop Color="White" />
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <TextBlock Text="CryptoConvert"
+                               FontSize="20"
+                               Grid.Column="1"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontStyle="Italic"
+                               FontWeight="Bold"
+                               Height="27"
+                               Width="140">
+                        <TextBlock.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1"
+                                                 StartPoint="0.5,0">
+                                <GradientStop Color="#FF78A1BB" />
+                                <GradientStop Color="White"
+                                              Offset="1" />
+                            </LinearGradientBrush>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBox Name="result"
+                             Grid.Row="2"
+                             Grid.Column="1"
+                             Height="100"
+                             VerticalAlignment="Top"
+                             FontSize="16"
+                             TextAlignment="Center"
+                             VerticalContentAlignment="Center"
+                             FontFamily="Arial"
+                             FontStyle="Italic"
+                             Margin="89,10,89,0">
+                        <TextBox.Background>
+                            <LinearGradientBrush EndPoint="0.5,1"
+                                                 StartPoint="0.5,0">
+                                <GradientStop Color="#FF78A1BB"
+                                              Offset="0" />
+                                <GradientStop Color="#FFE2E1B9"
+                                              Offset="1" />
+                            </LinearGradientBrush>
+                        </TextBox.Background>
+                    </TextBox>
+                    <Image x:Name="Image"
+                           Source="/Images/Bitcoin.png"
+                           Width="100"
+                           Height="100"
+                           VerticalAlignment="Top"
+                           Grid.Row="2"
+                           Grid.Column="0"
+                           Margin="29,10,29,0" />
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

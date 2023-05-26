@@ -8,11 +8,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Bitcoin.png" />
+    <None Remove="Images\Coin.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CurrenciesViewModel\CurrenciesViewModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\Bitcoin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Coin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
