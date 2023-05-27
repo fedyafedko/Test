@@ -54,40 +54,34 @@
                               FontSize="16"
                               IsReadOnly="True"
                               VerticalAlignment="Top"
-                              Margin="15,10,15,0"
+                              Margin="0,45,30,0"
                               Height="279"
                               SelectionChanged="currencyDataGrid_SelectionChanged"
-                              Grid.Row="1">
+                              Grid.RowSpan="2">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Rank"
                                                 Binding="{Binding Rank}"
-                                                FontFamily="Arial"
-                                                FontStyle="Italic"
+                                                FontFamily="Times New Roman"
                                                 FontWeight="Bold" />
                             <DataGridTextColumn Header="Id"
                                                 Binding="{Binding Id}"
-                                                FontFamily="Arial"
-                                                FontStyle="Italic" />
+                                                FontFamily="Times New Roman" />
                             <DataGridTextColumn Header="Name"
                                                 Binding="{Binding Name}"
-                                                FontFamily="Arial"
-                                                FontStyle="Italic" />
+                                                FontFamily="Times New Roman" />
                             <DataGridTextColumn Header="Symbol"
                                                 Binding="{Binding Symbol}"
-                                                FontFamily="Arial"
-                                                FontStyle="Italic" />
+                                                FontFamily="Times New Roman"/>
                             <DataGridTextColumn Header="Supply"
                                                 Binding="{Binding Supply}"
-                                                FontFamily="Arial"
-                                                FontStyle="Italic" />
+                                                FontFamily="Times New Roman" />
                             <DataGridTextColumn Header="PriceUSD"
                                                 Binding="{Binding PriceUSD}"
-                                                FontFamily="Arial"
-                                                FontStyle="Italic" />
+                                                FontFamily="Times New Roman" />
                             <DataGridTextColumn Header="ChangePercent24Hr"
                                                 Binding="{Binding  ChangePercent24Hr}"
-                                                FontFamily="Arial"
-                                                FontStyle="Italic" />
+                                                FontFamily="Times New Roman" />
+
                         </DataGrid.Columns>
                     </DataGrid>
                     <Image x:Name="myImage"
@@ -202,6 +196,98 @@
                            Grid.Row="2"
                            Grid.Column="0"
                            Margin="29,10,29,0" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Exchanges"
+                     Background="#E0DDCF">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="105*" />
+                        <RowDefinition Height="107*" />
+                        <RowDefinition Height="194*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="79*" />
+                        <ColumnDefinition Width="247*" />
+                        <ColumnDefinition Width="71*" />
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="comboBoxExchanges"
+                              Grid.Column="1"
+                              Height="40"
+                              IsEditable="True"
+                              IsTextSearchEnabled="True"
+                              VerticalAlignment="Top"
+                              VerticalContentAlignment="Center"
+                              HorizontalContentAlignment="Left"
+                              FontSize="16"
+                              GotFocus="comboBoxExchanges_GotFocus"
+                              ItemsSource="{Binding SimilarNames, UpdateSourceTrigger=PropertyChanged}"
+                              FontWeight="Bold"
+                              Margin="147,105,147,0"
+                              Grid.RowSpan="2" />
+                    <TextBlock Text="Crypto Exchanges"
+                               FontSize="20"
+                               Grid.Column="1"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontStyle="Italic"
+                               FontWeight="Bold"
+                               Height="27"
+                               Width="174">
+                        <TextBlock.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1"
+                                                 StartPoint="0.5,0">
+                                <GradientStop Color="#FF78A1BB" />
+                                <GradientStop Color="White"
+                                              Offset="1" />
+                            </LinearGradientBrush>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    <Button Content="➡️"
+                            VerticalContentAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                            Name="btnExchange"
+                            Click="btnExchange_Click"
+                            Margin="223,58,223,0"
+                            VerticalAlignment="Top"
+                            Height="40"
+                            Grid.Column="1"
+                            Grid.Row="1">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1"
+                                                 StartPoint="0.5,0">
+                                <GradientStop Color="#FFDCD6F7" />
+                                <GradientStop Color="#FFCEDADA"
+                                              Offset="1" />
+                                <GradientStop Color="#FFDAF7DC" />
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Border BorderBrush="#C0BDA5"
+                            BorderThickness="4"
+                            Grid.Column="1"
+                            Margin="25,10,25,10"
+                            Grid.Row="2">
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1"
+                                                 StartPoint="0.5,0">
+                                <GradientStop Color="#FFA6B1E1" />
+                                <GradientStop Color="#FF17C3B2"
+                                              Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <TextBlock Name="resultExchange"
+                                   Grid.Row="2"
+                                   Grid.Column="1"
+                                   Height="145"
+                                   VerticalAlignment="Top"
+                                   FontSize="20"
+                                   TextAlignment="Left"
+                                   FontFamily="Arial"
+                                   FontStyle="Italic"
+                                   Margin="9,21,9,0">
+                        </TextBlock>
+                    </Border>
                 </Grid>
             </TabItem>
         </TabControl>

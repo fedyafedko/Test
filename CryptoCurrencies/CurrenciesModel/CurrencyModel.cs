@@ -1,6 +1,6 @@
-﻿namespace CurrenciesModel
+﻿namespace ExchangesModel
 {
-    public class ResponseModel<T> where T : class
+    public class ResponseModelCurrencies<T> where T : class
     {
         public T Data { get; set; }
     }
