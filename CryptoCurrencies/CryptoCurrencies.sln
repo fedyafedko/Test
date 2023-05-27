@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", "{33509581-C821-4989-9D2B-CD9D7534D7F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "View", "View\View.csproj", "{33509581-C821-4989-9D2B-CD9D7534D7F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrenciesModel", "CurrenciesModel\CurrenciesModel.csproj", "{2DA438AC-3E16-4679-A7FD-31B4DDFF6C20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "CurrenciesModel\Model.csproj", "{2DA438AC-3E16-4679-A7FD-31B4DDFF6C20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrenciesViewModel", "CurrenciesViewModel\CurrenciesViewModel.csproj", "{1FB601AE-E428-43C5-BC2F-F4A1D3A5A4D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViewModel", "CurrenciesViewModel\ViewModel.csproj", "{1FB601AE-E428-43C5-BC2F-F4A1D3A5A4D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

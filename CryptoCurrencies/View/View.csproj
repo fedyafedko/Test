@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CurrenciesViewModel\CurrenciesViewModel.csproj" />
+    <ProjectReference Include="..\CurrenciesViewModel\ViewModel.csproj" />
   </ItemGroup>
 
   <ItemGroup>
