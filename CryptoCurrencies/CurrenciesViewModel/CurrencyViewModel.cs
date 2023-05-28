@@ -1,4 +1,4 @@
-﻿using ExchangesModel;
+﻿using Model;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 

@@ -1,15 +1,11 @@
-﻿using ExchangesModel;
-using Newtonsoft.Json;
+﻿using Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using ViewModel;
 

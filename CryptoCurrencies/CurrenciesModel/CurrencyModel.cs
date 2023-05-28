@@ -1,4 +1,4 @@
-﻿namespace ExchangesModel
+﻿namespace Model
 {
     public class ResponseModelCurrencies<T> where T : class
     {

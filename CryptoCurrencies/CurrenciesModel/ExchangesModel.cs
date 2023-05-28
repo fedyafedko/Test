@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExchangesModel
+namespace Model
 {
     public class ResponseModelExchanges<T> where T : class
     {

@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
-using ExchangesModel;
-using System.Net.Http;
+using Model;
 
 namespace ViewModel
 {
